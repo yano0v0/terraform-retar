@@ -47,7 +47,7 @@ module "s3_bucket" {
 
 #Create object in bucket
 module "object" {
-  source = "./terraform/modules/s3_bucket/modules/object"
+  source = "./.terraform/modules/s3_bucket/modules/object"
 
   bucket = module.s3_bucket.s3_bucket_id
   key    = "texto.txt"
