@@ -2,7 +2,7 @@ Para ejecutar la creación de la infraestructura como código en AWS deberá ten
 
 - Tener instalado Terraform para la ejecución del mismo.
 - Tener instalada la CLI de AWS, esto más que nada para poder acceder al profile donde se desplegará la infraestructura.
-- Tener instalado Git para poder traer el código del repositorio.
+- Tener instalado Git para poder traer el código del repositorio e instalar las dependencias.
 
 Recursos que se crearán:
 - VPC: 10.10.0.0/20
@@ -17,7 +17,7 @@ Paso a paso para la ejecución:
 -Desde una consola, deberá ejecutar git clone y la url correspondiente al repositorio. 
 -En dicha carpeta, podrá observar los archivos y dependencias del terraform. 
 -Abrir una terminal y situarse en la carpeta del repositorio. 
--En caso de que tenga otro profile a desplegar la infraestructura, deberá cambiar el valor "profile" del archivo "providers.tf" con el valor correspondiente. Esto más que nada, evitando poner credenciales (accesskey y secretkeyid) por motivos de seguridad. 
+-En caso de que tenga otro profile a desplegar configurado en la consola de AWS la infraestructura, deberá cambiar el valor "profile" del archivo "providers.tf" con el valor correspondiente. Esto más que nada, evitando poner credenciales (accesskey y secretkeyid) por motivos de seguridad. 
 -Correr terraform init para que inicialice los módulos de terraform.
 -Correr el comando: terraform plan (El mismo realizará la correspondiente verificación de los archivos de terraform y preguntará en que región de AWS disponibilizaremos esta infraestructura para este caso: eu-west-1)
 -Nos dará un completo detalle de lo que se va a implementar en la cuenta, y nos solicitará confirmación. Escribiremos yes y daremos a enter, esto nos permitirá continuar. 
