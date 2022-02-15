@@ -9,6 +9,6 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  profile = "nubiral"
+  profile = "default"
   region  = "eu-west-1"
 }
