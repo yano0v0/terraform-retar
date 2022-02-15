@@ -1,0 +1,26 @@
+Para ejecutar la creación de la infraestructura como código en AWS deberá tener en cuenta lo siguiente:
+
+- Tener instalado Terraform para la ejecución del mismo.
+- Tener instalada la CLI de AWS, esto más que nada para poder acceder al profile donde se desplegará la infraestructura.
+- Tener instalado Git para poder traer el código del repositorio.
+
+Recursos que se crearán:
+- VPC: 10.10.0.0/20
+- 4 Subnets (publicas y privadas) de CIDR /24
+- Internet Gateway y Nat Gateway.
+- Route tables correspondientes.
+- VPC Flow logs.
+- Bucket de S3 y objeto de nombre "texto.txt"
+- Función Lambda que lee el contenido del objeto del bucket de S3 y un trigger de API Gateway como punto de ingreso.
+
+Paso a paso para la ejecución:
+-Desde una consola, deberá ejecutar git clone y la url correspondiente al repositorio. 
+-En dicha carpeta, podrá observar los archivos y dependencias del terraform. 
+-Abrir una terminal y situarse en la carpeta del repositorio. 
+-En caso de que tenga otro profile a desplegar la infraestructura, deberá cambiar el valor "profile" del archivo "providers.tf" con el valor correspondiente. Esto más que nada, evitando poner credenciales (accesskey y secretkeyid) por motivos de seguridad. 
+-Correr terraform init para que inicialice los módulos de terraform.
+-Correr el comando: terraform plan (El mismo realizará la correspondiente verificación de los archivos de terraform y preguntará en que región de AWS disponibilizaremos esta infraestructura para este caso: eu-west-1)
+-Nos dará un completo detalle de lo que se va a implementar en la cuenta, y nos solicitará confirmación. Escribiremos yes y daremos a enter, esto nos permitirá continuar. 
+-Una vez verificado que el plan es el correcto, correr terraform apply para ejecutar dicha configuración e implementar la infraestructura.
+-Una vez finalizado, nos mostrará el siguiente mensaje: 
+    "Apply complete! Resources: # added, # changed, # destroyed."
